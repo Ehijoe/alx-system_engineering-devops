@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -name "*.gif" -type f | rev| cut -d / -f 1 | cut -c 5- | rev | sort -f
+cat < echo "$(find . -name ".*.gif" -type f | rev| cut -d / -f 1 | cut -c 5- | rev | sort -f)" < echo "$(find . -name ".*.gif" -type f | rev| cut -d / -f 1 | cut -c 5- | rev | sort -f)"
