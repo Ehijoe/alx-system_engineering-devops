@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Print out the files in the current directory with trimmed names
+
+for file in *
+do
+    echo "${file}" | rev | cut -d "-" -f 1 | rev
+done
