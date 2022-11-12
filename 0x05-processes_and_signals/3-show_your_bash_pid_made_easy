@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Print out the Process ID of bash
 
-ps aux --forest | grep "bash"
+pgrep -l "bash"
