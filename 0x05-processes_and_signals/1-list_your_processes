@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Print out the Process ID
 
-ps -eF
+ps -exF
