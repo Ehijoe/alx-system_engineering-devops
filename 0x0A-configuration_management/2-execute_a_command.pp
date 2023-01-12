@@ -1,5 +1,5 @@
 # Kill the process killmenow
 
 exec { 'killmenow':
-  command => ['pkill', 'killmenow']
+  command => ['/bin/pkill', 'killmenow']
 }
