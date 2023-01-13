@@ -1,6 +1,6 @@
 # Configure client to connect to ssh without password
 
-file { '/etc/ssh/config':
+file { '/etc/ssh/ssh_config':
   ensure  => present,
   content =>
 "# SSH config file
