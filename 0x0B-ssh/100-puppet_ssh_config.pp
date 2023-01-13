@@ -1,17 +1,12 @@
 # Configure client to connect to ssh without password
 
-include stdlib
-
 file { '/etc/ssh/config':
-  ensure => present,
-}
+  ensure  => present,
+  content =>
+"# SSH config file
 
-file_line { 'Ensure no password is accepted':
-  path => '/etc/ssh/config',
-  line => 'PasswordAuthentication = no',
-}
-
-file_line { 'Ensure no password is accepted':
-  path => '/etc/ssh/config',
-  line => 'IdentityFile = ~/.ssh/school',
+host = 18.234.107.94
+IdentityFile = ~/.ssh/school
+PasswordAuthentication = no
+"
 }
