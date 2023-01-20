@@ -8,7 +8,7 @@ sudo rm -f /var/www/html/*
 echo "Hello World!" | sudo tee /var/www/html/index.html
 sudo service nginx start
 
-NGINX_CONFIG='
+NGINX_CONFIG="
 server {
 	   listen 80 default_server;
 	   listen [::]:80 default_server;
@@ -24,10 +24,10 @@ server {
 	   }
 
        location / {
-       			try_files $uri $uri/ =404;
+       			try_files \$uri \$uri/ =404;
        }
 }
-'
+"
 
 echo -e "$NGINX_CONFIG" | sudo tee /etc/nginx/sites-enabled/default
 
