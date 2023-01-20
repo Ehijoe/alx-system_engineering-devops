@@ -12,31 +12,30 @@ exec { "remove file":
 
 file { '/var/www/html/index.html':
   ensure  => present,
-  content => "Hello World!",
+  content => "Hello World!\n",
 }
 
-$conf = @("CONFIG")
-      server {
-	      listen 80 default_server;
-	      listen [::]:80 default_server;
+$conf = 'server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
 
-          root /var/www/html;
+    root /var/www/html;
 
-          index index.html index.htm index.nginx-debian.html;
+    index index.html index.htm index.nginx-debian.html;
 
-          server_name _;
+    server_name _;
 
-          location /redirect_me {
-       	      return 301 https://www.google.com;
-	      }
+    location = /redirect_me {
+       	return 301 https://www.google.com;
+	}
 
-          location / {
-              try_files \$uri \$uri/ =404;
-          }
-      }
-      | CONFIG
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+'
 
-file { '/var/www/html/index.html':
+file { '/etc/nginx/sites-available/default':
   ensure  => present,
   content => $conf,
 }
