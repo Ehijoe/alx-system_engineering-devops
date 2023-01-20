@@ -21,6 +21,10 @@ server {
 
        server_name _;
 
+	   location /404.html {
+	   			internal;
+	   }
+
        location /redirect_me {
        			return 301 https://www.google.com;
 	   }
