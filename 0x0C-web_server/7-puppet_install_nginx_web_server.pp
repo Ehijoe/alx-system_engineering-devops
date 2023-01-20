@@ -2,6 +2,7 @@
 
 package { 'nginx':
   provider => 'apt',
+  ensure   => 'installed',
 }
 
 exec { "remove file":
