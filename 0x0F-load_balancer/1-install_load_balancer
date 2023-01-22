@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy as a load balancer
+
+sudo apt-get update
+sudo apt install haproxy

@@ -4,8 +4,33 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
-config="\nadd_header X-Served-By \$hostname;"
+sudo rm -f /var/www/html/*
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx start
 
-sudo sed -i "s/http {/&${config}/" /etc/nginx/nginx.conf
+NGINX_CONFIG="
+server {
+       listen 80 default_server;
+       listen [::]:80 default_server;
+
+       root /var/www/html;
+
+	   add_header X-Served-By \$hostname;
+
+       index index.html index.htm index.nginx-debian.html;
+
+       server_name _;
+
+       location /redirect_me {
+       			return 301 https://www.google.com;
+	   }
+
+       location / {
+       			try_files \$uri \$uri/ =404;
+       }
+}
+"
+
+echo -e "$NGINX_CONFIG" | sudo tee /etc/nginx/sites-enabled/default
 
 sudo service nginx reload
