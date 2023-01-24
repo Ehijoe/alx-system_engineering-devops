@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Check the ip's attached to a domain name
+# shellcheck disable=SC2086
+
+check_domain () {
+	full_domain="${1}.${domain}"
+	dns_info="$(dig ${full_domain} | grep -A1 ANSWER | tail -1)"
+	echo "$dns_info" \
+		| awk -v subdomain="${1}" \
+			  '{printf "The subdomain %s is a "$4" record and points to "$5"\n", subdomain}'
+	return 0
+}
+
+domain="$1"
+if [ "$2" ]
+then
+	check_domain "${2}"
+else
+	for subdomain in www lb-01 web-01 web-02
+	do
+		check_domain "${subdomain}"
+	done
+fi
