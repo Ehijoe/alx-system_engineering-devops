@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""Show the TODO list progress of an employee."""
+""" Show the TODO list progress of an employee. """
 import json
 import sys
 from urllib.request import urlopen
 
 
 if __name__ == '__main__':
-    """Some Text."""
     if len(sys.argv) < 2:
         print(f"Usage: {sys.argv[0]} employee_id")
         sys.exit(1)
@@ -30,6 +29,8 @@ if __name__ == '__main__':
     done = len(completed)
     total = len(todos)
 
-    print(f"Employee {Employee['name']} is done with tasks({done}/{total}):")
+    print(
+        f"Employee {Employee.get('name')} is done with tasks({done}/{total}):"
+    )
     for task in completed:
-        print(f"\t {task['title']}")
+        print(f"\t {task.get('title')}")
