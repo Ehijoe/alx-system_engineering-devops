@@ -1,39 +1,20 @@
 #!/usr/bin/python3
-"""Show the TODO list progress of an employee.
-
-Usage: 0-gather_data_from_an_API.py employee_id
-"""
-import json
+''' gather data from an API '''
+import requests
 from sys import argv
-from urllib.request import urlopen
-
 
 if __name__ == '__main__':
-    if len(argv) < 2:
-        print(f"Usage: {argv[0]} employee_id")
-        exit(1)
+    # get employee response [used to get name in line 19]
+    endpoint = 'https://jsonplaceholder.typicode.com'
+    user_res = requests.get(endpoint + '/users/' + argv[1]).json()
 
-    Employee = int(argv[1])
+    # get total number of tasks [used to get len of all tasks in line 18]
+    todos = requests.get(endpoint + '/todos?userId=' + argv[1]).json()
 
-    # Get the Employee Todolist
-    todos = urlopen(
-        f"https://jsonplaceholder.typicode.com/todos?userId={Employee}"
-    ).read()
-    todos = json.loads(todos)
+    # get number completed tasks and their titles
+    titles_done = [todo['title'] for todo in todos if todo['completed']]
 
-    # Get the Employee details
-    Employee = urlopen(
-        f"https://jsonplaceholder.typicode.com/users/{Employee}"
-    ).read()
-    Employee = json.loads(Employee)
+    print('Employee {} is done with tasks({}/{}):'
+          .format(user_res['name'], len(titles_done), len(todos)))
 
-    # Count Todos
-    completed = [todo for todo in todos if todo.get('completed')]
-    done = len(completed)
-    total = len(todos)
-
-    print(
-        f"Employee {Employee.get('name')} is done with tasks({done}/{total}):"
-    )
-    for task in completed:
-        print(f"\t {task.get('title')}")
+    [print('\t {}'.format(title)) for title in titles_done]
