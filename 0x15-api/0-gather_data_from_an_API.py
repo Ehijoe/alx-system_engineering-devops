@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Show the TODO list progress of an employee.
+'''Show the TODO list progress of an employee.
 
 Usage: 0-gather_data_from_an_API.py employee_id
-"""
+'''
 import json
 from sys import argv
 from urllib.request import urlopen
