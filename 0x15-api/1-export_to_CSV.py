@@ -12,7 +12,7 @@ if __name__ == '__main__':
     # get total number of tasks [used to get len of all tasks in line 18]
     todos = requests.get(endpoint + '/todos?userId=' + argv[1]).json()
 
-    with open("USER_ID.csv", "w") as data_file:
+    with open(f"{argv[1]}.csv", "w") as data_file:
         fields = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
         writer = csv.DictWriter(data_file, fields,
                                 quotechar='"', quoting=csv.QUOTE_ALL)
