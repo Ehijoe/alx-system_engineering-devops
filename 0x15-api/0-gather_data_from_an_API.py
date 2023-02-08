@@ -1,16 +1,19 @@
 #!/usr/bin/python3
-""" Show the TODO list progress of an employee. """
+"""Show the TODO list progress of an employee.
+
+Usage: 0-gather_data_from_an_API.py employee_id
+"""
 import json
-import sys
+from sys import argv
 from urllib.request import urlopen
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} employee_id")
-        sys.exit(1)
+    if len(argv) < 2:
+        print(f"Usage: {argv[0]} employee_id")
+        exit(1)
 
-    Employee = int(sys.argv[1])
+    Employee = int(argv[1])
 
     # Get the Employee Todolist
     todos = urlopen(
