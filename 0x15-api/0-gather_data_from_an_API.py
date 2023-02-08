@@ -6,6 +6,7 @@ from urllib.request import urlopen
 
 
 if __name__ == '__main__':
+    """Some Text."""
     if len(sys.argv) < 2:
         print(f"Usage: {sys.argv[0]} employee_id")
         sys.exit(1)
