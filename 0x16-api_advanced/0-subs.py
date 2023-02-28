@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
         "User-Agent": "ALXProjectBot:Devops_0x16 v1.0.0 Advanced API",
     }
     resp = requests.get(
-        f"{base_url}/r/{subreddit}/about.json",
+        "{}/r/{}/about.json".format(base_url, subreddit),
         headers=headers,
     )
     return resp.json().get("data", {}).get("subscribers", 0)
