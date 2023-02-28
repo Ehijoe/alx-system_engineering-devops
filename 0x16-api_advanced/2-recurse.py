@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Print the hot posts of a subreddit."""
 import requests
-from pprint import pprint
 
 
 def recurse(subreddit, hot_list=[], after=""):
