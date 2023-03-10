@@ -17,7 +17,12 @@ update.
 
 - 9:12 pm - Customers complain that the site is unreachable.
 
-- 9:42 pm - Dev team is called in to investigate issue.
+- 9:35 pm - Engineer on call checks that application server is running
+  and reachable.
+
+- 9:48 pm - Dev team is called in to investigate issue.
+
+- 10:03 pm - Server configuration is investigated.
 
 - 10:15 pm - Server configuration is updated and tested.
 
