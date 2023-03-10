@@ -51,4 +51,4 @@ prevent such an incident in the future:
 
 - Improve disaster recovery system to reduce MTA and MTR
 
-- Give free coffee to devs on call ;)
+- Give free coffee to devs on call :coffee:
